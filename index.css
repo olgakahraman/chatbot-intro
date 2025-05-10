@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color, #f0f0f0);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4caf50;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.chat-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  max-width: 400px;
+}
+
+.chat-box p {
+  margin: 0.5rem 0;
+}
+
+.input-wrapper {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-wrapper input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.input-wrapper button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

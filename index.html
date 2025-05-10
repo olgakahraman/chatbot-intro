@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn with Chat</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Learning Made Simple</h1>
+    </header>
+    <main>
+      <section id="steps">
+        <h2>Steps to Get Started</h2>
+        <ol>
+          <li>Choose a topic</li>
+          <li>Follow tutorials</li>
+          <li>Build a project</li>
+        </ol>
+        <div class="assistant">
+          <button id="start-chat" class="btn">Ask the Assistant</button>
+          <div id="chat-box" class="chat-box"></div>
+          <div id="input-wrapper" class="input-wrapper hidden">
+            <input
+              type="text"
+              id="user-input"
+              placeholder="Type your answer..."
+            />
+            <button id="send-btn">Send</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
