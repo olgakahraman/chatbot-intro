@@ -68,3 +68,15 @@ section {
 .hidden {
   display: none;
 }
+
+
+.chat-box p:nth-child(even){
+  background:#f0f8ff;
+  padding:8px;
+  border-radius:8px;
+}
+.chat-box p:nth-child(odd){
+  background:#e6ffe6;
+  padding:8px;
+  border-radius:8px;
+}

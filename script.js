@@ -10,8 +10,15 @@ const steps = [
   'Hi! Need help getting started?',
   "Step 1: What's your goal?",
   'Great! What do you already know?',
-  "Awesome! Let's plan your next step!",
+  'Awesome! Now, tell me a city to check the weather!',
 ];
+
+const weatherEmoji = {
+  clear: '☀️',
+  clouds: '☁️',
+  rain: '🌧️',
+  snow: '❄️',
+};
 
 startBtn.addEventListener('click', async () => {
   chatBox.innerHTML = '';
@@ -22,9 +29,28 @@ startBtn.addEventListener('click', async () => {
 });
 
 sendBtn.addEventListener('click', handleUserMessage);
-userInput.addEventListener('keydown', (e) => {
+userInput.addEventListener('keydown', e => {
   if (e.key === 'Enter') handleUserMessage();
 });
+
+async function fetchWeather(city) {
+  const API_KEY = 'API_KEY';
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('City not found');
+    const data = await response.json();
+    const weatherType = data.weather[0].main.toLowerCase();
+    const emoji = weatherEmoji[weatherType] || '🌈';
+    console.log(data);
+    return `${emoji} Weather in ${data.name}: ${Math.round(data.main.temp)}℃, ${
+      data.weather[0].description
+    }`;
+  } catch (error) {
+    return `❌ Error: ${error.message} Please try another city`;
+  }
+}
 
 async function handleUserMessage() {
   const input = userInput.value.trim();
@@ -32,6 +58,13 @@ async function handleUserMessage() {
 
   appendMessage(`You: ${input}`);
   userInput.value = '';
+
+  if (currentStep === 3) {
+    appendMessage('Bot: Checking weather...⏳');
+    const weather = await fetchWeather(input);
+    appendMessage(`Bot:${weather}`);
+    inputWrapper.classList.add('hidden');
+  }
 
   currentStep++;
   if (currentStep < steps.length) {
@@ -54,7 +87,7 @@ function appendMessage(text) {
 async function assistantSay(message) {
   return new Promise(resolve => {
     setTimeout(() => {
-      appendMessage(message);
+      appendMessage(`Bot:${message}`);
       resolve();
     }, 1000);
   });
